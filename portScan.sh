@@ -10,13 +10,7 @@ function ctrl_c(){
 #Ctrl+C
 trap ctrl_c INT
 
-#Ocultar el cursor
-tput civis
-
 #Port Scanner
 for port in $(seq 1 65535); do
   (echo '' > /dev/tcp/127.0.0.1/$port) 2>/dev/null && echo "Port $port - OPEN" &
 done; wait
-
-#Recuperar el cursor
-tput cnorm
